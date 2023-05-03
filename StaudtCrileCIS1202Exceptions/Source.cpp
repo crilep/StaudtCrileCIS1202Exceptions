@@ -44,29 +44,45 @@ character('A', 32) should throw an invalidRangeExcpeption (do not allow upper- a
     
     */
 
-
-    try {
-
-        //char testChar1 = character('a', 1);
-        //char testChar2 = character('A', -1);
-        //char testChar3 = character('Z', -1);
-        //char testChar4 = character('?', -1);
-        char testChar5 = character('A', 35);
-        
-        cout << testChar5;
-
-    }
-    catch (Invalid_Character_Excpeption_C invalidCharExcept){
-
-        cout << invalidCharExcept.Invalid_Character_Excpeption();
-
-    }
-    catch (Invalid_Range_Exception_C invalidRangeExcept){
-
-        cout << invalidRangeExcept.Invalid_Range_Exception();
-
-    }
     
+    for (int i = 0; i < 5; i++) {
+        try {
+
+            if (i == 0) {
+                char testChar1 = character('a', 1);
+                cout << "\ncharacter('a', 1) : \n" << testChar1;
+            }
+            else if (i == 1) {
+                cout << "\ncharacter('A', -1) : ";
+                char testChar2 = character('A', -1);
+            }
+            else if (i == 2) {
+                cout << "\ncharacter('?', -1) : ";
+                char testChar4 = character('?', -1);
+            }
+            else if (i == 3) {
+                char testChar4 = character('Z', -1);
+                cout << "\ncharacter('Z', -1) : \n" << testChar4;
+            }
+            else if (i == 4) {
+                cout << "\ncharacter('A', 35) : ";
+                char testChar5 = character('A', 35);
+            }
+           
+
+        }
+        catch (Invalid_Character_Excpeption_C invalidCharExcept) {
+
+            cout << invalidCharExcept.Invalid_Character_Excpeption();
+
+        }
+        catch (Invalid_Range_Exception_C invalidRangeExcept) {
+
+            cout << invalidRangeExcept.Invalid_Range_Exception();
+
+        }
+       
+    }
 
 }
 
