@@ -12,7 +12,7 @@ class Invalid_Character_Excpeption_C
 public:
     string Invalid_Character_Excpeption()   // member function
     {
-        return ("\nERROR : Invalid character... Please re-enter");
+        return ("\nERROR : Invalid character...");
 
     }
 
@@ -23,7 +23,7 @@ class Invalid_Range_Exception_C
 public:
     string Invalid_Range_Exception()   // member function
     {
-        return ("\nERROR : Invalid range... Please re-enter");
+        return ("\nERROR : Invalid range...");
 
     }
 
@@ -31,20 +31,9 @@ public:
 
 char character(char start, int offset);
 
-
 int main() {
 
-    /*
-character('a', 1) should return 'b'.
-character('a', -1) should throw an invalidRangeExpection.
-character('Z', -1) should return 'Y'.
-character('?', 5) should throw an invalidCharacterExcpeption.
-character('A', 32) should throw an invalidRangeExcpeption (do not allow upper- and lower-case transitions, character('A', 32) should throw an exception, not return 'a').
-
-    
-    */
-
-    
+    //loop to test different exceptions
     for (int i = 0; i < 5; i++) {
         try {
 
@@ -68,9 +57,10 @@ character('A', 32) should throw an invalidRangeExcpeption (do not allow upper- a
                 cout << "\ncharacter('A', 35) : ";
                 char testChar5 = character('A', 35);
             }
-           
+
 
         }
+        //catch exceptions
         catch (Invalid_Character_Excpeption_C invalidCharExcept) {
 
             cout << invalidCharExcept.Invalid_Character_Excpeption();
@@ -81,7 +71,7 @@ character('A', 32) should throw an invalidRangeExcpeption (do not allow upper- a
             cout << invalidRangeExcept.Invalid_Range_Exception();
 
         }
-       
+
     }
 
 }
@@ -91,6 +81,7 @@ char character(char start, int offset) {
     char characterFinal;
     bool valid = false;
 
+    //test if start is a character
     if (!isalpha(start)) {
 
         throw (Invalid_Character_Excpeption_C());
@@ -98,18 +89,19 @@ char character(char start, int offset) {
     }
     else {
 
-       bool isUpperCase = isupper(start);
-       characterFinal = start + offset;
-       bool isUpperCaseAfter = isupper(characterFinal);
+        //prevent uppercase to lowercase ranges and vice versa
+        bool isUpperCase = isupper(start);
+        characterFinal = start + offset;
+        bool isUpperCaseAfter = isupper(characterFinal);
 
-       if (isUpperCase == isUpperCaseAfter) {
+        if (isUpperCase == isUpperCaseAfter) {
 
-           valid = true;
+            valid = true;
 
-       }
+        }
 
         if (!isalpha(characterFinal) || !valid) {
-       
+
             throw (Invalid_Range_Exception_C());
 
         }
